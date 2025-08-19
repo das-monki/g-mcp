@@ -201,6 +201,16 @@
       "hash": "sha256-s2Uvt4vUkAUDW0D0ObRSiOu1m9s9rjU/H9q5JKgowe8="
     },
     {
+      "mvn-path": "com/google/apis/google-api-services-admin-directory/directory_v1-rev20250804-2.0.0/google-api-services-admin-directory-directory_v1-rev20250804-2.0.0.jar",
+      "mvn-repo": "https://repo1.maven.org/maven2/",
+      "hash": "sha256-i5DUbOVNbgfA0KcA0NG91cxjU3a4/D53u0pfd6lY4zU="
+    },
+    {
+      "mvn-path": "com/google/apis/google-api-services-admin-directory/directory_v1-rev20250804-2.0.0/google-api-services-admin-directory-directory_v1-rev20250804-2.0.0.pom",
+      "mvn-repo": "https://repo1.maven.org/maven2/",
+      "hash": "sha256-qKWQ70qLQnZs3J7mrVWooC2eCHLTT4CuiCvodDVWRNU="
+    },
+    {
       "mvn-path": "com/google/apis/google-api-services-gmail/v1-rev20250630-2.0.0/google-api-services-gmail-v1-rev20250630-2.0.0.jar",
       "mvn-repo": "https://repo1.maven.org/maven2/",
       "hash": "sha256-UmaOdHYZciTDbwOuPO3w/DQFTbOe92o1v4iYe4nWMjw="
