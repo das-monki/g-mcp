@@ -1,0 +1,27 @@
+# Clojure
+target/
+.cpcache/
+.nrepl-port
+.rebel_readline_history
+
+# Google Credentials
+credentials.json
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Nix
+result
+result-*
+
+# Logs
+*.log
+
+/.clj-kondo/*
+!/.clj-kondo/config.edn
