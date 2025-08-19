@@ -39,9 +39,9 @@
   (server/->server
    {:name "G-MCP Local Mail Server"
     :version "0.1.0"
-    :initialize (fn [_]
-                  (println "Initializing G-MCP Local Mail Server")
-                  "G-MCP initialized successfully")
+    :initialize (fn
+                  [_]
+                  (comment "Place for long-running initialization f.e. connecting to databases, etc."))
     :tools mail-tools
     :prompts nil
     :resources nil}))
@@ -49,5 +49,4 @@
 (defn -main
   "Start the G-MCP server"
   [& _args]
-  (println "Starting G-MCP Local Mail MCP Server...")
   (server/start-server! g-mcp-server))
