@@ -7,17 +7,21 @@
 (def mail-tools
   (tools/tools
    (read-emails
-    "Read emails from Mail.app"
-    [{:keys [mailbox max-results query]
-      :type {mailbox :string max-results :number query :string}
-      :or {mailbox "INBOX" max-results 10 query ""}}]
-    [(mail/read-emails mailbox max-results query)])
+    "Read emails from Mail.app."
+    [{:keys [account max-results query]
+      :type {account :string max-results :number query :string}
+      :or {max-results 10 query ""}
+      :doc {account "The account to read emails from, f.e. info@example.com"
+            max-results "Maximum number of emails to read"
+            query "Search query to filter emails by subject (usually empty)"}}]
+    [(mail/read-emails account max-results query)])
 
    (create-draft
     "Create an email draft in Mail.app"
     [{:keys [account to subject body cc bcc]
       :type {account :string to :string subject :string body :string cc :string bcc :string}
-      :or {account "" cc "" bcc ""}}]
+      :or {cc "" bcc ""}
+      :doc {account "The account to create the draft email for, f.e. info@example.com"}}]
     [(mail/create-draft account to subject body cc bcc)])
 
    (list-accounts
