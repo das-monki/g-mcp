@@ -1,7 +1,7 @@
 (ns g-mcp.gmail
   (:require [g-mcp.auth :as auth]
             [clojure.string :as str])
-  (:import [com.google.api.services.gmail.model Message MessagePart MessagePartHeader]
+  (:import [com.google.api.services.gmail.model Message]
            [com.google.api.client.util Base64]))
 
 (defn- get-header-value [headers header-name]
@@ -14,7 +14,7 @@
   (try
     (when encoded-str
       (String. (Base64/decodeBase64 encoded-str) "UTF-8"))
-    (catch Exception e
+    (catch Exception _
       encoded-str)))
 
 (defn- extract-body-from-part [part]
@@ -58,9 +58,6 @@
   [domain max-results query]
   (try
     (let [gmail-service (auth/get-gmail-service)
-          user-id (if (str/includes? domain "@")
-                    domain
-                    (str "me@" domain))
           request (-> gmail-service
                       .messages
                       (.list "me"))

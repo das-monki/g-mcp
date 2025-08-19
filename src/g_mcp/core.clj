@@ -12,19 +12,19 @@
     [{:keys [domain max-results query]
       :type {domain :string max-results :number query :string}
       :or {max-results 10 query ""}}]
-    (gmail/read-emails domain max-results query))
+    [(gmail/read-emails domain max-results query)])
 
    (create-draft
     "Create an email draft in Google Workspace"
     [{:keys [domain to subject body cc bcc]
       :type {domain :string to :string subject :string body :string cc :string bcc :string}
       :or {cc "" bcc ""}}]
-    (gmail/create-draft domain to subject body cc bcc))
+    [(gmail/create-draft domain to subject body cc bcc)])
 
    (list-domains
     "List available domains for the authenticated Google Workspace"
     [{}]
-    (auth/list-domains))))
+    [(auth/list-domains)])))
 
 (def g-mcp-server
   (server/->server
@@ -39,6 +39,6 @@
 
 (defn -main
   "Start the G-MCP server"
-  [& args]
+  [& _args]
   (println "Starting G-MCP Google Workspace MCP Server...")
   (server/start-server! g-mcp-server))

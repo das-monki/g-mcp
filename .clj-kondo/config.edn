@@ -1,0 +1,3 @@
+{:lint-as {modex.mcp.tools/tools clojure.core/do}
+ :config-in-call {modex.mcp.tools/tools
+                  {:ignore [:unresolved-symbol]}}}

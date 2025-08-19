@@ -1,11 +1,10 @@
 (ns g-mcp.auth
-  (:require [clojure.data.json :as json]
-            [clojure.java.io :as io])
+
   (:import [com.google.auth.oauth2 GoogleCredentials]
            [com.google.auth.http HttpCredentialsAdapter]
            [com.google.api.client.googleapis.javanet GoogleNetHttpTransport]
            [com.google.api.client.json.gson GsonFactory]
-           [com.google.api.services.gmail Gmail Gmail$Builder]
+           [com.google.api.services.gmail Gmail$Builder]
            [java.io FileInputStream]))
 
 (def ^:private scopes

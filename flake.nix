@@ -14,12 +14,24 @@
     };
   };
 
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "aarch64-darwin" "x86_64-linux" "x86_64-darwin" "aarch64-linux" ];
+      systems = [
+        "aarch64-darwin"
+        "x86_64-linux"
+        "x86_64-darwin"
+        "aarch64-linux"
+      ];
       imports = [ inputs.devshell.flakeModule ];
 
-      perSystem = { config, pkgs, system, ... }:
+      perSystem =
+        {
+          config,
+          pkgs,
+          system,
+          ...
+        }:
         let
           cljpkgs = inputs.clj-nix.packages.${system};
         in
