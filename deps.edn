@@ -3,16 +3,12 @@
         org.clojure/data.json {:mvn/version "2.5.1"}
         org.clojure/core.async {:mvn/version "1.8.741"}
         modex/modex {:git/url "https://github.com/theronic/modex.git"
-                     :sha "1b3faf910276c4e056a65c5572f3d9d159bb69c0"}
-        com.google.api-client/google-api-client {:mvn/version "2.8.1"}
-        com.google.apis/google-api-services-gmail {:mvn/version "v1-rev20250630-2.0.0"}
-        com.google.apis/google-api-services-admin-directory {:mvn/version "directory_v1-rev20250804-2.0.0"}
-        com.google.auth/google-auth-library-oauth2-http {:mvn/version "1.37.1"}}
+                     :sha "1b3faf910276c4e056a65c5572f3d9d159bb69c0"}}
  :aliases
  {:test {:extra-paths ["test"]
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
                       lambdaisland/kaocha {:mvn/version "1.87.1366"}}}
-  :build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.4"}}
+  :build {:deps {io.github.clojure/tools.build {:mvn/version "0.10.7"}}
           :ns-default build}
   :run {:main-opts ["-m" "g-mcp.core"]}
   :outdated {:replace-deps {olical/depot {:mvn/version "2.4.1"}}

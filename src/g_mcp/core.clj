@@ -1,44 +1,53 @@
 (ns g-mcp.core
   (:require [modex.mcp.server :as server]
             [modex.mcp.tools :as tools]
-            [g-mcp.gmail :as gmail]
-            [g-mcp.auth :as auth])
+            [g-mcp.mail :as mail])
   (:gen-class))
 
-(def gmail-tools
+(def mail-tools
   (tools/tools
    (read-emails
-    "Read emails from a Google Workspace domain"
-    [{:keys [domain max-results query]
-      :type {domain :string max-results :number query :string}
-      :or {max-results 10 query ""}}]
-    [(gmail/read-emails domain max-results query)])
+    "Read emails from Mail.app"
+    [{:keys [mailbox max-results query]
+      :type {mailbox :string max-results :number query :string}
+      :or {mailbox "INBOX" max-results 10 query ""}}]
+    [(mail/read-emails mailbox max-results query)])
 
    (create-draft
-    "Create an email draft in Google Workspace"
-    [{:keys [domain to subject body cc bcc]
-      :type {domain :string to :string subject :string body :string cc :string bcc :string}
-      :or {cc "" bcc ""}}]
-    [(gmail/create-draft domain to subject body cc bcc)])
+    "Create an email draft in Mail.app"
+    [{:keys [account to subject body cc bcc]
+      :type {account :string to :string subject :string body :string cc :string bcc :string}
+      :or {account "" cc "" bcc ""}}]
+    [(mail/create-draft account to subject body cc bcc)])
 
-   (list-domains
-    "List available domains for the authenticated Google Workspace"
+   (list-accounts
+    "List all mail accounts configured in Mail.app"
     [{}]
-    [(auth/list-domains)])))
+    [(mail/list-accounts)])
+
+   (get-mailboxes
+    "Get list of available mailboxes"
+    [{}]
+    [(mail/get-mailboxes)])
+
+   (check-mail-access
+    "Check if Mail.app is accessible"
+    [{}]
+    [(mail/check-mail-access)])))
 
 (def g-mcp-server
   (server/->server
-   {:name "G-MCP Google Workspace Server"
+   {:name "G-MCP Local Mail Server"
     :version "0.1.0"
     :initialize (fn [_]
-                  (println "Initializing G-MCP Google Workspace Server")
+                  (println "Initializing G-MCP Local Mail Server")
                   "G-MCP initialized successfully")
-    :tools gmail-tools
+    :tools mail-tools
     :prompts nil
     :resources nil}))
 
 (defn -main
   "Start the G-MCP server"
   [& _args]
-  (println "Starting G-MCP Google Workspace MCP Server...")
+  (println "Starting G-MCP Local Mail MCP Server...")
   (server/start-server! g-mcp-server))
