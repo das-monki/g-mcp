@@ -7,10 +7,6 @@
         "PATH=/run/current-system/sw/bin:$PATH && nix run github:duupay/clojure-mcp#clojure-mcp -- --port 7888"
       ]
     },
-    "context7": {
-      "type": "sse",
-      "url": "https://mcp.context7.com/sse"
-    },
     "deepwiki": {
       "command": "npx",
       "args": [
